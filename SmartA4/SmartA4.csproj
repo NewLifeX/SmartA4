@@ -1,0 +1,61 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.1;netstandard2.0;net461</TargetFrameworks>
+    <AssemblyTitle>A2工业计算机驱动</AssemblyTitle>
+    <Description>IoT驱动，符合IoT标准库的PC驱动，采集CPU、内存、网络等数据，提供语音播报和重启等服务。</Description>
+    <Company>新生命开发团队</Company>
+    <Copyright>©2002-2023 新生命开发团队</Copyright>
+    <VersionPrefix>1.0</VersionPrefix>
+    <VersionSuffix>$([System.DateTime]::Now.ToString(`yyyy.MMdd`))</VersionSuffix>
+    <Version>$(VersionPrefix).$(VersionSuffix)</Version>
+    <FileVersion>$(Version)</FileVersion>
+    <AssemblyVersion>$(VersionPrefix).*</AssemblyVersion>
+    <Deterministic>false</Deterministic>
+    <OutputPath>..\Bin</OutputPath>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\Doc\newlife.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>$(AssemblyName)</PackageId>
+    <Authors>$(Company)</Authors>
+    <PackageProjectUrl>https://newlifex.com/iot</PackageProjectUrl>
+    <PackageIcon>leaf.png</PackageIcon>
+    <RepositoryUrl>https://github.com/NewLifeX/SmartA2</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>物联网;IoT;边缘计算;Edge;新生命团队;NewLife;PLC;$(AssemblyName)</PackageTags>
+    <PackageReleaseNotes>IoT驱动，符合IoT标准库的PC驱动，采集CPU、内存、网络等数据，提供语音播报和重启等服务。</PackageReleaseNotes>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PackageReadmeFile>Readme.MD</PackageReadmeFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NewLife.IoT" Version="1.8.2023.511" />
+    <PackageReference Include="NewLife.ModbusRTU" Version="1.6.2023.511" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\Doc\leaf.png" Link="leaf.png" PackagePath="\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Readme.MD">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
