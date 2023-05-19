@@ -43,7 +43,7 @@ public class A4
 
     #region 串口
     /// <summary>创建串口</summary>
-    /// <param name="com"></param>
+    /// <param name="com">串口COM1/COM2/COM3/COM4，全部支持RS485，其中COM3/COM4复用RS232</param>
     /// <param name="baudrate"></param>
     /// <returns></returns>
     /// <exception cref="ArgumentOutOfRangeException"></exception>
