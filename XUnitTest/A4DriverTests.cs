@@ -30,7 +30,7 @@ public class A4DriverTests
 
         var ps = _spec.Properties;
         Assert.NotNull(ps);
-        Assert.Equal(11, ps.Length);
+        Assert.Equal(13, ps.Length);
 
         Assert.NotNull(_spec.Services);
         Assert.Null(_spec.Events);
