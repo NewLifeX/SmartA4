@@ -11,7 +11,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.3" />
-    <PackageReference Include="NewLife.UnitTest" Version="1.0.2023.311-beta1027" />
+    <PackageReference Include="NewLife.UnitTest" Version="1.0.2023.718" />
     <PackageReference Include="System.Speech" Version="7.0.0" />
     <PackageReference Include="xunit" Version="2.5.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.5.0">
