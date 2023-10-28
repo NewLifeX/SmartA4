@@ -16,7 +16,7 @@ internal class Program
     {
         XTrace.UseConsole();
 
-        var host = new A2();
+        var host = new A4();
 
         // 配置并打开串口COM1
         var serial = host.CreateSerial(1, 9600);
