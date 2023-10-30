@@ -6,6 +6,22 @@ using NewLife.Serial.Protocols;
 
 namespace SmartA4;
 
+/// <summary>串口</summary>
+public enum Coms
+{
+    /// <summary>COM1</summary>
+    COM1,
+
+    /// <summary>COM2</summary>
+    COM2,
+
+    /// <summary>COM3</summary>
+    COM3,
+
+    /// <summary>COM4</summary>
+    COM4,
+}
+
 /// <summary>A2硬件工厂</summary>
 public class A4
 {
@@ -47,11 +63,11 @@ public class A4
     /// <param name="baudrate"></param>
     /// <returns></returns>
     /// <exception cref="ArgumentOutOfRangeException"></exception>
-    public SerialPort CreateSerial(Int32 com, Int32 baudrate = 9600)
+    public SerialPort CreateSerial(Coms com, Int32 baudrate = 9600)
     {
-        if (com <= 0 || com > 4) throw new ArgumentOutOfRangeException(nameof(com), $"无效串口COM{com}，支持COM1/COM2/COM3/COM4");
+        if (com < 0 || com > Coms.COM4) throw new ArgumentOutOfRangeException(nameof(com), $"无效串口COM{com}，支持COM1/COM2/COM3/COM4");
 
-        return new SerialPort(ComNames[com - 1], baudrate);
+        return new SerialPort(ComNames[(Int32)com], baudrate);
     }
 
     /// <summary>创建Modbus</summary>
@@ -59,11 +75,11 @@ public class A4
     /// <param name="baudrate"></param>
     /// <returns></returns>
     /// <exception cref="ArgumentOutOfRangeException"></exception>
-    public Modbus CreateModbus(Int32 com, Int32 baudrate = 9600)
+    public Modbus CreateModbus(Coms com, Int32 baudrate = 9600)
     {
-        if (com <= 0 || com > 4) throw new ArgumentOutOfRangeException(nameof(com), $"无效串口COM{com}，支持COM1/COM2/COM3/COM4");
+        if (com < 0 || com > Coms.COM4) throw new ArgumentOutOfRangeException(nameof(com), $"无效串口COM{com}，支持COM1/COM2/COM3/COM4");
 
-        return new ModbusRtu { PortName = ComNames[com - 1], Baudrate = baudrate };
+        return new ModbusRtu { PortName = ComNames[(Int32)com], Baudrate = baudrate };
     }
     #endregion
 

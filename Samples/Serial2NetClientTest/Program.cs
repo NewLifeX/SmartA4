@@ -19,7 +19,7 @@ internal class Program
         var host = new A4();
 
         // 配置并打开串口COM1
-        var serial = host.CreateSerial(1, 9600);
+        var serial = host.CreateSerial(Coms.COM1, 9600);
         serial.DataReceived += OnReceiveSerial;
         serial.Open();
 
