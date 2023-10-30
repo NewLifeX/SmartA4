@@ -65,7 +65,7 @@ public class A4
     /// <exception cref="ArgumentOutOfRangeException"></exception>
     public SerialPort CreateSerial(Coms com, Int32 baudrate = 9600)
     {
-        if (com < 0 || com > Coms.COM4) throw new ArgumentOutOfRangeException(nameof(com), $"无效串口COM{com}，支持COM1/COM2/COM3/COM4");
+        if (com < 0 || com > Coms.COM4) throw new ArgumentOutOfRangeException(nameof(com), $"无效串口{com}，支持COM1/COM2/COM3/COM4");
 
         return new SerialPort(ComNames[(Int32)com], baudrate);
     }
@@ -77,7 +77,7 @@ public class A4
     /// <exception cref="ArgumentOutOfRangeException"></exception>
     public Modbus CreateModbus(Coms com, Int32 baudrate = 9600)
     {
-        if (com < 0 || com > Coms.COM4) throw new ArgumentOutOfRangeException(nameof(com), $"无效串口COM{com}，支持COM1/COM2/COM3/COM4");
+        if (com < 0 || com > Coms.COM4) throw new ArgumentOutOfRangeException(nameof(com), $"无效串口{com}，支持COM1/COM2/COM3/COM4");
 
         return new ModbusRtu { PortName = ComNames[(Int32)com], Baudrate = baudrate };
     }
