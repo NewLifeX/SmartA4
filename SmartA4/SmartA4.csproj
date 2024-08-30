@@ -37,15 +37,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1">
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="NewLife.IoT" Version="1.9.2023.726-beta0137" />
-    <PackageReference Include="NewLife.ModbusRTU" Version="1.6.2023.711-beta1735" />
+    <PackageReference Include="NewLife.IoT" Version="2.2.2024.829-beta1458" />
+    <PackageReference Include="NewLife.ModbusRTU" Version="1.8.2024.426-beta1011" />
   </ItemGroup>
 
   <ItemGroup>
