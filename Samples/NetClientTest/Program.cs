@@ -1,4 +1,5 @@
 ﻿using NewLife;
+using NewLife.Data;
 using NewLife.Log;
 using NewLife.Net;
 

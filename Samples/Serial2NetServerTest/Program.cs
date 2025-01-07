@@ -1,4 +1,5 @@
-﻿using NewLife.Log;
+﻿using NewLife.Data;
+using NewLife.Log;
 using NewLife.Net;
 
 // 网络服务端，接收客户端数据

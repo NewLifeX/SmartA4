@@ -1,4 +1,5 @@
-﻿using NewLife.Log;
+﻿using NewLife.Data;
+using NewLife.Log;
 using NewLife.Net;
 
 // 网络服务端，一般跑在服务器或上位机上，用于接收工控机内客户端的数据

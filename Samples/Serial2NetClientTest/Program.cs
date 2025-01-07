@@ -57,6 +57,7 @@ internal class Program
     {
         // 接收到服务器数据，转发到串口
         var pk = e.Packet;
-        _serial.Write(pk.Data, pk.Offset, pk.Count);
+        var buf = pk.ReadBytes();
+        _serial.Write(buf, 0, buf.Length);
     }
 }
