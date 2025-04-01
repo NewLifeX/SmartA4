@@ -113,7 +113,7 @@ public class A4
                     break;
                 }
             }
-            if (!flag) File.AppendAllText(file, $"\r\n127.0.0.1\t{name}\t{name}\r\n");
+            if (!flag) File.AppendAllText(file, $"\r\n127.0.0.1\t{name}\r\n");
         }
     }
     #endregion
