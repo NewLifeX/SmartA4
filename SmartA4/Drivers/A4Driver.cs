@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Reflection;
 using NewLife;
+using NewLife.IoT.Controllers;
 using NewLife.IoT.Drivers;
 using NewLife.IoT.ThingModels;
 using NewLife.IoT.ThingSpecification;
@@ -53,9 +54,9 @@ public class A4Driver : DriverBase<Node, A4Parameter>
             if (point != null)
             {
                 var val = _a4.GetValue(pi);
-                if (val is InputPort inputPort)
+                if (val is IInputPort inputPort)
                     dic[point.Name] = inputPort.Read();
-                else if (val is OutputPort outputPort)
+                else if (val is IOutputPort outputPort)
                     dic[point.Name] = outputPort.Read();
             }
         }
@@ -148,7 +149,9 @@ public class A4Driver : DriverBase<Node, A4Parameter>
 
         // 只读
         foreach (var item in points)
+        {
             item.AccessMode = "r";
+        }
 
         //services.Add(ServiceSpec.Create(Speak));
         services.Add(ServiceSpec.Create(Reboot));
@@ -156,20 +159,22 @@ public class A4Driver : DriverBase<Node, A4Parameter>
 
         // A2特有
         foreach (var pi in _a4.GetType().GetProperties())
-            if (pi.PropertyType == typeof(InputPort))
+        {
+            if (pi.PropertyType == typeof(IInputPort))
             {
                 var pt = PropertySpec.Create(pi);
                 pt.DataType.Type = "bool";
                 pt.AccessMode = "r";
                 points.Add(pt);
             }
-            else if (pi.PropertyType == typeof(OutputPort))
+            else if (pi.PropertyType == typeof(IOutputPort))
             {
                 var pt = PropertySpec.Create(pi);
                 pt.DataType.Type = "bool";
                 pt.AccessMode = "rw";
                 points.Add(pt);
             }
+        }
         services.Add(ServiceSpec.Create(SetHostName));
 
         spec.Properties = points.Where(e => e != null).ToArray();
