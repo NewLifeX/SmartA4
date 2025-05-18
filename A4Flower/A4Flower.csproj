@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <AssemblyTitle>自动浇花</AssemblyTitle>
+    <Description>数据处理、定时任务、MQ生产消费、系统监控等超长独立工作的后台任务</Description>
+    <Company>新生命开发团队</Company>
+    <Copyright>©2002-2025 NewLife</Copyright>
+    <VersionPrefix>1.1</VersionPrefix>
+    <VersionSuffix>$([System.DateTime]::Now.ToString(`yyyy.MMdd`))</VersionSuffix>
+    <Version>$(VersionPrefix).$(VersionSuffix)</Version>
+    <FileVersion>$(Version)</FileVersion>
+    <AssemblyVersion>$(VersionPrefix).*</AssemblyVersion>
+    <Deterministic>false</Deterministic>
+    <OutputPath>..\Bin\Console</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="A4.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NewLife.Core" Version="11.5.2025.501" />
+    <PackageReference Include="NewLife.Stardust" Version="3.3.2025.506" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SmartA4\SmartA4.csproj" />
+  </ItemGroup>
+
+</Project>

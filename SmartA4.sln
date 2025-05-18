@@ -56,6 +56,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serial2NetServerTest", "Sam
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatabaseTest", "Samples\DatabaseTest\DatabaseTest.csproj", "{B049FA36-51A1-4384-A53C-F9D86E002D29}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "A4Flower", "A4Flower\A4Flower.csproj", "{2755682F-709E-1031-B357-DB0AEAFD71C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -114,6 +116,10 @@ Global
 		{B049FA36-51A1-4384-A53C-F9D86E002D29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B049FA36-51A1-4384-A53C-F9D86E002D29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B049FA36-51A1-4384-A53C-F9D86E002D29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2755682F-709E-1031-B357-DB0AEAFD71C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2755682F-709E-1031-B357-DB0AEAFD71C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2755682F-709E-1031-B357-DB0AEAFD71C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2755682F-709E-1031-B357-DB0AEAFD71C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
