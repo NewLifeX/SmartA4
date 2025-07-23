@@ -50,13 +50,45 @@ public class A4 : Board
     public IOutputPort UsbPower { get; } = new FileOutputPort("/dev/usbpwr");
 
     /// <summary>看门狗</summary>
-    public Watchdog Watchdog { get; } = new Watchdog { FileName = "/dev/watchdog" };
+    public Watchdog Watchdog { get; } = new Watchdog("/dev/watchdog");
 
     /// <summary>串口名</summary>
     public String[] ComNames = ["/dev/ttyS1", "/dev/ttyS2", "/dev/ttyS3", "/dev/ttyS4"];
+
+    private IDictionary<String, String> _maps;
+    #endregion
+
+    #region 构造
+    /// <summary>实例化A2</summary>
+    public A4()
+    {
+        _maps = new Dictionary<String, String>(StringComparer.OrdinalIgnoreCase)
+        {
+            ["Led"] = "/dev/led",
+            ["Led2"] = "/dev/led2",
+            ["Led3"] = "/dev/led3",
+            ["Buzzer"] = "/dev/buzzer",
+            ["Key"] = "/dev/key",
+            ["UsbPower"] = "/dev/usbpwr",
+            ["Watchdog"] = "/dev/watchdog",
+            ["COM1"] = "/dev/ttyS1",
+            ["COM2"] = "/dev/ttyS2",
+            ["COM3"] = "/dev/ttyS3",
+            ["COM4"] = "/dev/ttyS4"
+        };
+    }
     #endregion
 
     #region 端口
+    /// <summary>映射设备名的真实地址</summary>
+    /// <remarks>例如在A2工业计算机中，COM1可映射到/dev/ttyAMA0，项目实施人员仅需配置通用名COM1即可</remarks>
+    public override String Map(String name)
+    {
+        if (_maps.TryGetValue(name, out var value)) return value;
+
+        return base.Map(name);
+    }
+
     /// <summary>创建输出口</summary>
     /// <param name="name"></param>
     /// <returns></returns>

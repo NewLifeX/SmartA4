@@ -1,51 +1,49 @@
-﻿namespace SmartA4;
+﻿using NewLife;
+
+namespace SmartA4;
 
 /// <summary>
 /// 看门狗。Open打开后，需要定期Feed喂狗，否则系统重启
 /// </summary>
 /// <remarks>看门狗的超时时间为 10 秒，如果超过 10 秒没有喂狗，系统将自动重启</remarks>
-public class Watchdog
+public class Watchdog(String fileName) : DisposeBase
 {
-    /// <summary>
-    /// 文件路径
-    /// </summary>
-    public String FileName { get; set; }
+    /// <summary>文件路径</summary>
+    public String FileName { get; set; } = fileName;
 
-    private FileStream _stream;
+    private FileStream _fs;
 
-    /// <summary>
-    /// 打开看门狗
-    /// </summary>
-    public void Open() => _stream = new FileStream(FileName, FileMode.OpenOrCreate);
-
-    /// <summary>
-    /// 关闭看门狗
-    /// </summary>
-    public void Close()
+    /// <summary>销毁</summary>
+    /// <param name="disposing"></param>
+    protected override void Dispose(Boolean disposing)
     {
-        if (_stream == null) return;
+        base.Dispose(disposing);
 
-        var buf = new Byte[1];
-        buf[0] = (Byte)'V';
-
-        _stream.Position = 0;
-        _stream.Write(buf, 0, buf.Length);
-
-        _stream.Dispose();
-        _stream = null;
+        if (_fs != null)
+        {
+            Close();
+            _fs.TryDispose();
+        }
     }
 
-    /// <summary>
-    /// 喂狗
-    /// </summary>
+    private FileStream GetFile() => _fs ??= new FileStream(FileName.GetFullPath(), FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite);
+
+    /// <summary>关闭看门狗</summary>
+    public void Close()
+    {
+        var fs = GetFile();
+
+        fs.WriteByte((Byte)'V');
+        fs.Flush();
+    }
+
+    /// <summary>喂狗</summary>
     public void Feed()
     {
-        //var buf = new Byte[1];
-        //buf[0] = (Byte)'1';
+        var fs = GetFile();
 
-        //_stream.Position = 0;
-        //_stream.Write(buf, 0, buf.Length);
         // 向看门狗设备写入数据，刷新watchdog计数器
-        File.WriteAllText(FileName.GetFullPath(), "1");
+        fs.WriteByte((Byte)'1');
+        fs.Flush();
     }
 }

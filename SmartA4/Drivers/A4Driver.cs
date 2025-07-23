@@ -135,7 +135,7 @@ public class A4Driver : DriverBase<Node, A4Parameter>
 
         var points = new List<PropertySpec>();
         var services = new List<ServiceSpec>();
-        var extends = new List<PropertyExtend>();
+        //var extends = new List<PropertyExtend>();
 
         var pis = typeof(MachineInfo).GetProperties();
 

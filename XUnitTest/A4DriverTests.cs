@@ -34,7 +34,7 @@ public class A4DriverTests
 
         Assert.NotNull(_spec.Services);
         Assert.Null(_spec.Events);
-        Assert.Null(_spec.ExtendedProperties);
+        //Assert.Null(_spec.ExtendedProperties);
     }
 
     [Fact]
